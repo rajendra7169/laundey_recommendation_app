@@ -14,7 +14,7 @@ const Add = ({ token }) => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("Men");
-  const [subCategory, setSubCategory] = useState("Topwear");
+  const [subCategory, setSubCategory] = useState("Kathmandu");
   const [bestseller, setBestseller] = useState(false);
   const [sizes, setSizes] = useState([]);
 
@@ -129,7 +129,7 @@ const Add = ({ token }) => {
       </div>
 
       <div className="w-full">
-        <p className="mb-2">Product Name</p>
+        <p className="mb-2">Name</p>
         <input
           onChange={(e) => setName(e.target.value)}
           value={name}
@@ -141,7 +141,7 @@ const Add = ({ token }) => {
       </div>
 
       <div className="w-full">
-        <p className="mb-2">Product Description</p>
+        <p className="mb-2">Description</p>
         <textarea
           onChange={(e) => setDescription(e.target.value)}
           value={description}
@@ -153,131 +153,119 @@ const Add = ({ token }) => {
 
       <div className="flex flex-col sm:flex-row gap-2 w-full sm:gap-8">
         <div>
-          <p className="mb-2">Product Category</p>
-          <select
-            onChange={(e) => setCategory(e.target.value)}
-            className="w-full px-3 py-2"
-          >
-            <option value="Men">Men</option>
-            <option value="Women">Women</option>
-            <option value="Kids">Kids</option>
-          </select>
-        </div>
-
-        <div>
-          <p className="mb-2">Sub Category</p>
+          <p className="mb-2">Choose Location</p>
           <select
             onChange={(e) => setSubCategory(e.target.value)}
             className="w-full px-3 py-2"
           >
-            <option value="Topwear">Topwear</option>
-            <option value="Bottomwear">Bottomwear</option>
-            <option value="Winterwear">Winterwear</option>
+            <option value="Kathmandu">Kathmandu</option>
+            <option value="Bhaktapur">Bhaktapur</option>
+            <option value="Lalitpur">Lalitpur</option>
           </select>
         </div>
 
         <div>
-          <p className="mb-2">Product Price</p>
+          <p className="mb-2">Price/Kg</p>
           <input
             onChange={(e) => setPrice(e.target.value)}
             value={price}
             className="w-full px-3 py-2 sm:w-[120px]"
             type="number"
-            placeholder="25"
+            placeholder="250/Kg"
           />
         </div>
       </div>
 
       <div>
-        <p className="mb-2">Product Sizes</p>
+        <p className="mb-2">Clothes Types</p>
         <div className="flex gap-3">
           <div
             onClick={() =>
               setSizes((prev) =>
-                prev.includes("S")
-                  ? prev.filter((item) => item !== "S")
-                  : [...prev, "S"]
+                prev.includes("Mix Clothes")
+                  ? prev.filter((item) => item !== "Mix Clothes")
+                  : [...prev, "Mix Clothes"]
               )
             }
           >
             <p
               className={`${
-                sizes.includes("S") ? "bg-pink-100" : "bg-slate-200"
+                sizes.includes("Mix Clothes") ? "bg-pink-100" : "bg-slate-200"
               } px-3 py-1 cursor-pointer`}
             >
-              S
+              Mix Clothes
             </p>
           </div>
 
           <div
             onClick={() =>
               setSizes((prev) =>
-                prev.includes("M")
-                  ? prev.filter((item) => item !== "M")
-                  : [...prev, "M"]
+                prev.includes("Wool Clothes")
+                  ? prev.filter((item) => item !== "Wool Clothes")
+                  : [...prev, "Wool Clothes"]
               )
             }
           >
             <p
               className={`px-3 py-1 cursor-pointer ${
-                sizes.includes("M") ? "bg-pink-100" : "bg-slate-200"
+                sizes.includes("Wool Clothes") ? "bg-pink-100" : "bg-slate-200"
               }`}
             >
-              M
+              Wool Clothes
             </p>
           </div>
 
           <div
             onClick={() =>
               setSizes((prev) =>
-                prev.includes("L")
-                  ? prev.filter((item) => item !== "L")
-                  : [...prev, "L"]
+                prev.includes("Blankets")
+                  ? prev.filter((item) => item !== "Blankets")
+                  : [...prev, "Blankets"]
               )
             }
           >
             <p
               className={`px-3 py-1 cursor-pointer ${
-                sizes.includes("L") ? "bg-pink-100" : "bg-slate-200"
+                sizes.includes("Blankets") ? "bg-pink-100" : "bg-slate-200"
               }`}
             >
-              L
+              Blankets
             </p>
           </div>
 
           <div
             onClick={() =>
               setSizes((prev) =>
-                prev.includes("XL")
-                  ? prev.filter((item) => item !== "XL")
-                  : [...prev, "XL"]
+                prev.includes("Delicate")
+                  ? prev.filter((item) => item !== "Delicate")
+                  : [...prev, "Delicate"]
               )
             }
           >
             <p
               className={`px-3 py-1 cursor-pointer ${
-                sizes.includes("XL") ? "bg-pink-100" : "bg-slate-200"
+                sizes.includes("Delicate") ? "bg-pink-100" : "bg-slate-200"
               }`}
             >
-              XL
+              Delicate
             </p>
           </div>
 
           <div
             onClick={() =>
               setSizes((prev) =>
-                prev.includes("XXL")
-                  ? prev.filter((item) => item !== "XXL")
-                  : [...prev, "XXL"]
+                prev.includes("Heavy Duty")
+                  ? prev.filter((item) => item !== "Heavy Duty")
+                  : [...prev, "Heavy Duty"]
               )
             }
           >
             <p
               className={`px-3 py-1 cursor-pointer ${
-                sizes.includes("XXL") ? "bg-pink-100" : "bg-slate-200"
+                sizes.includes("Heavy Duty") ? "bg-pink-100" : "bg-slate-200"
               }`}
             >
-              XXL
+              Heavy Duty
             </p>
           </div>
         </div>
@@ -291,7 +279,7 @@ const Add = ({ token }) => {
           id="bestseller"
         />
         <label className="cursor-pointer" htmlFor="bestseller">
-          Add to bestseller
+          Add to Recently Added
         </label>
       </div>
 

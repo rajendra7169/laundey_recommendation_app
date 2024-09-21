@@ -14,10 +14,11 @@ const LatestCollection = () => {
   return (
     <div className="my-10">
       <div className="py-8 text-center text-3xl">
-        <Title text1={"LATEST"} text2={"COLLECTIONS"} />
+        <Title text1={"COMPLETE"} text2={"COLLECTIONS"} />
         <p className="m-auto w-3/4 text-xs text-gray-600 sm:text-sm md:text-base">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the.
+          Experience the best in laundry management with our comprehensive
+          services. From washing and drying to ironing and folding, we've got
+          you covered. Enjoy hassle-free laundry care with just a few clicks.
         </p>
       </div>
 
@@ -29,7 +30,7 @@ const LatestCollection = () => {
             id={item._id}
             image={item.image}
             name={item.name}
-            price={item.price}
+            price={`${item.price}/Kg`}
           />
         ))}
       </div>

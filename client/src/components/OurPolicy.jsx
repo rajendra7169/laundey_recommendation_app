@@ -9,8 +9,10 @@ const OurPolicy = () => {
           className="m-auto mb-5 w-12"
           alt="exchange_icon"
         />
-        <p className="font-semibold">Easy Exchange Policy</p>
-        <p className="text-gray-400">We offer hassle free exchange policy</p>
+        <p className="font-semibold">Easy Re-wash Policy</p>
+        <p className="text-gray-400">
+          We offer a hassle-free re-wash if you're not satisfied.
+        </p>
       </div>
 
       <div>
@@ -19,8 +21,10 @@ const OurPolicy = () => {
           className="m-auto mb-5 w-12"
           alt="quality_icon"
         />
-        <p className="font-semibold">7 Days Return Policy</p>
-        <p className="text-gray-400">We provide 7 days free return policy</p>
+        <p className="font-semibold">Express Service Available</p>
+        <p className="text-gray-400">
+          We provide same-day or next-day laundry service.
+        </p>
       </div>
 
       <div>
@@ -29,8 +33,10 @@ const OurPolicy = () => {
           className="m-auto mb-5 w-12"
           alt="support_img"
         />
-        <p className="font-semibold">Best customer support</p>
-        <p className="text-gray-400">we provide 24/7 customer support</p>
+        <p className="font-semibold">Dedicated Customer Support</p>
+        <p className="text-gray-400">
+          We're here to help with any questions or concerns.
+        </p>
       </div>
     </div>
   );

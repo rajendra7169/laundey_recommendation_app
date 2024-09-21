@@ -69,7 +69,7 @@ const List = ({ token }) => {
             <p>{item.category}</p>
             <p>
               {currency}
-              {item.price}
+              {` ${item.price}/Kg`}
             </p>
             <p
               onClick={() => removeProduct(item._id)}

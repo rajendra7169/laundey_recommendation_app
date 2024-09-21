@@ -1,75 +1,71 @@
 import Title from "../components/Title";
-import Newsletter from "../components/NewsletterBox";
 import { assets } from "../assets/assets";
 
 const About = () => {
   return (
     <div>
-      <div className="text-2xl text-center pt-8 border-t">
+      <div className="border-t pt-8 text-center text-2xl">
         <Title text1={"ABOUT"} text2={"US"} />
       </div>
 
-      <div className="my-10 flex flex-col md:flex-row gap-16">
+      <div className="my-10 flex flex-col gap-16 md:flex-row">
         <img
           src={assets.about_img}
           className="w-full md:max-w-[450px]"
           alt="about_img"
         />
-        <div className="flex flex-col justify-center gap-6 md:w-2/4 text-gray-600">
+        <div className="flex flex-col justify-center gap-6 text-gray-600 md:w-2/4">
           <p>
-            Forever was born out of a passion for innovation and a desire to
-            revolutionize the way people shop online. Our journey began with a
-            simple idea: to provide a platform where customers can easily
-            discover, explore, and purchase a wide range of products from the
-            comfort of their homes.
+            We're passionate about making laundry day a breeze. Our journey
+            started with a simple idea: to revolutionize the way people handle
+            their laundry, offering convenience and quality right at their
+            doorstep.
           </p>
           <p>
-            Since our inception, we've worked tirelessly to curate a diverse
-            selection of high-quality products that cater to every taste and
-            preference. From fashion and beauty to electronics and home
-            essentials, we offer an extensive collection sourced from trusted
-            brands and suppliers.
+            Since our inception, we've worked tirelessly to perfect our laundry
+            services, catering to every fabric and care requirement. From
+            everyday wear to delicate garments and household linens, we handle
+            your laundry with the utmost care and attention.
           </p>
           <strong className="text-gray-800">Our Mission</strong>
           <p>
-            Our mission at Forever is to empower customers with choice,
-            convenience, and confidence. We're dedicated to providing a seamless
-            shopping experience that exceeds expectations, from browsing and
-            ordering to delivery and beyond.
+            Our mission is to provide you with a hassle-free laundry experience
+            that saves you time and energy. We're dedicated to delivering
+            exceptional service, from pickup to delivery, ensuring your clothes
+            are returned to you fresh, clean, and ready to wear.
           </p>
         </div>
       </div>
 
-      <div className="text-xl py-4">
+      <div className="py-4 text-xl">
         <Title text1={"WHY"} text2={"CHOOSE US"} />
       </div>
 
-      <div className="flex flex-col md:flex-row text-sm mb-20">
-        <div className="border px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5">
-          <strong>Quality Assurance:</strong>
+      <div className="mb-20 flex flex-col text-sm md:flex-row">
+        <div className="flex flex-col gap-5 border px-10 py-8 sm:py-20 md:px-16">
+          <strong>Expert Care:</strong>
           <p className="text-gray-600">
             We meticulously select and vet each product to ensure it meets our
             stringent quality standards.
           </p>
         </div>
 
-        <div className="border px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5">
+        <div className="flex flex-col gap-5 border px-10 py-8 sm:py-20 md:px-16">
           <strong>Convinience:</strong>
           <p className="text-gray-600">
-            With our user-friendly interface and hassle-free ordering process,
-            shopping has never been easier.
+            Schedule a pickup and delivery at your convenience. We'll handle the
+            rest.
           </p>
         </div>
 
-        <div className="border px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5">
-          <strong>Exceptional Customer Service:</strong>
+        <div className="flex flex-col gap-5 border px-10 py-8 sm:py-20 md:px-16">
+          <strong>Affordability:</strong>
           <p className="text-gray-600">
-            Our team of dedicated professionals is here to assist you the way,
-            ensuring your satisfaction is our top priority.
+            Our transparent pricing ensures you get the best value for your
+            money.
           </p>
         </div>
       </div>
-      <Newsletter />
     </div>
   );
 };

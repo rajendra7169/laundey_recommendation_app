@@ -8,15 +8,17 @@ const Hero = () => {
         <div className="text-[#414141]">
           <div className="flex items-center gap-2">
             <p className="h-[2px] w-8 bg-[#414141] md:w-11"></p>
-            <p className="text-sm font-medium md:text-base">OUR BESTSELLERS</p>
+            <p className="text-sm font-medium md:text-base">WASH AND FOLD</p>
           </div>
 
           <h1 className="prata-regular text-3xl leading-relaxed sm:py-3 lg:text-5xl">
-            Latest Arrivals
+            Laundry Made Easy
           </h1>
 
           <div className="flex items-center gap-2">
-            <p className="text-sm font-semibold md:text-base">SHOP NOW</p>
+            <p className="text-sm font-semibold md:text-base">
+              Order Now To Get Free Pickup
+            </p>
             <p className="h-[2px] w-8 bg-[#414141] md:w-11"></p>
           </div>
         </div>

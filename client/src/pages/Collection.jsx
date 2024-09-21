@@ -92,85 +92,50 @@ const Collection = () => {
             alt="dropdown_icon"
           />
         </p>
-        {/* category filters */}
-        <div
-          className={`mt-6 border border-gray-300 py-6 pl-5 ${showFilter ? "" : "hidden"} sm:block`}
-        >
-          <p className="mb-3 text-sm font-medium">CATEGORIES</p>
-          <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
-            <p className="flex gap-2">
-              <input
-                className="w-3"
-                type="checkbox"
-                value={"Men"}
-                onChange={toggleCategory}
-              />
-              Men
-            </p>
-            <p className="flex gap-2">
-              <input
-                className="w-3"
-                type="checkbox"
-                value={"Women"}
-                onChange={toggleCategory}
-              />
-              Women
-            </p>
-            <p className="flex gap-2">
-              <input
-                className="w-3"
-                type="checkbox"
-                value={"Kids"}
-                onChange={toggleCategory}
-              />
-              Kids
-            </p>
-          </div>
-        </div>
         {/* subcategory filter */}
         <div
           className={`my-5 border border-gray-300 py-6 pl-5 ${showFilter ? "" : "hidden"} sm:block`}
         >
-          <p className="mb-3 text-sm font-medium">TYPE</p>
+          <p className="mb-3 text-sm font-medium">LOCATION</p>
           <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
             <p className="flex gap-2">
               <input
                 className="w-3"
                 type="checkbox"
-                value={"Topwear"}
+                value={"Kathmandu"}
                 onChange={toggleSubCategory}
               />
-              Topwear
+              Kathmandu
             </p>
             <p className="flex gap-2">
               <input
                 className="w-3"
                 type="checkbox"
-                value={"Bottomwear"}
+                value={"Bhaktapur"}
                 onChange={toggleSubCategory}
               />
-              Bottomwear
+              Bhaktapur
             </p>
             <p className="flex gap-2">
               <input
                 className="w-3"
                 type="checkbox"
-                value={"Winterwear"}
+                value={"Lalitpur"}
                 onChange={toggleSubCategory}
               />
-              Winterwear
+              Lalitpur
             </p>
           </div>
         </div>
       </div>
       {/* right side */}
       <div className="flex-1">
-        <div className="flex justify-between text-base sm:text-2xl mb-4">
+        <div className="mb-4 flex justify-between text-base sm:text-2xl">
           <Title text1={"ALL"} text2={"COLLECTION"} />
           {/* product short */}
           <select
             onChange={(e) => setSortType(e.target.value)}
-            className="border-2 border-gray-300 text-sm px-2"
+            className="border-2 border-gray-300 px-2 text-sm"
           >
             <option value="relavent">Short by: Relevant</option>
             <option value="low-high">Short by: Low to High</option>
@@ -179,13 +144,13 @@ const Collection = () => {
         </div>
 
         {/* map product */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6">
+        <div className="grid grid-cols-2 gap-4 gap-y-6 md:grid-cols-3 lg:grid-cols-4">
           {filterProducts.map((item, index) => (
             <ProductItem
               key={index}
               name={item.name}
               id={item._id}
-              price={item.price}
+              price={`${item.price}/Kg`}
               image={item.image}
             />
           ))}
