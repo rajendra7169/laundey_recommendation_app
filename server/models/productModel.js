@@ -10,9 +10,13 @@ const productSchema = new mongoose.Schema({
   sizes: { type: Array, required: true },
   bestseller: { type: Boolean },
   date: { type: Number, required: true },
+  phone: { type: String, required: true }, // New field for phone number
+  email: { type: String, required: true }, // New field for email address
+  socialPage: { type: String, required: true }, // New field for Facebook page
+  shopLocation: { type: String, required: true }, // New field for shop location
 });
 
-// creatre model
+// create model
 const productModel =
   mongoose.models.product || mongoose.model("Product", productSchema);
 

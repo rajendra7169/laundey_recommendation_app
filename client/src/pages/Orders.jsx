@@ -2,11 +2,16 @@ import { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../context/ShopContext";
 import Title from "../components/Title";
 import axios from "axios";
+import MapComponent from "../components/MapComponent";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Orders = () => {
   const { backendUrl, token, currency } = useContext(ShopContext);
-
   const [orderData, setOrderData] = useState([]);
+  const [selectedOrder, setSelectedOrder] = useState(null);
+  const [userLocation, setUserLocation] = useState(null);
+  const shopLocation = [27.703855, 85.30716];
 
   const loadOrderData = async () => {
     try {
@@ -34,15 +39,65 @@ const Orders = () => {
 
         setOrderData(allOrdersItem.reverse());
       }
-    } catch (error) {}
+    } catch (error) {
+      console.error("Error loading orders:", error);
+    }
   };
 
   useEffect(() => {
     loadOrderData();
   }, [token]);
 
+  const getUserLocation = () => {
+    if (navigator.geolocation) {
+      const watchId = navigator.geolocation.watchPosition(
+        (position) => {
+          setUserLocation([
+            position.coords.latitude,
+            position.coords.longitude,
+          ]);
+        },
+        (error) => {
+          console.error("Error getting user location:", error);
+        },
+        { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 },
+      );
+
+      return () => navigator.geolocation.clearWatch(watchId);
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
+  };
+
+  useEffect(() => {
+    getUserLocation();
+  }, []);
+
+  // Handle Track Order click
+  const handleTrackOrder = (item) => {
+    if (item.status === "Delivered") {
+      toast.error("Your order is already delivered.");
+    } else if (item.status === "Out for Delivery") {
+      setSelectedOrder(item); // Open the map popup if status is 'Out for Delivery'
+    } else {
+      toast.error("Order is not out for delivery yet.");
+    }
+  };
+
   return (
     <div className="border-t pt-16">
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+
       <div className="text-2xl">
         <Title text1={"MY"} text2={"ORDERS"} />
       </div>
@@ -82,7 +137,7 @@ const Orders = () => {
                 <p className="text-sm md:text-base">{item.status}</p>
               </div>
               <button
-                onClick={loadOrderData}
+                onClick={() => handleTrackOrder(item)}
                 className="rounded-sm border px-4 py-2 text-sm font-medium"
               >
                 Track Order
@@ -91,6 +146,27 @@ const Orders = () => {
           </div>
         ))}
       </div>
+
+      {/* Popup for map */}
+      {selectedOrder && userLocation && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+          onClick={() => setSelectedOrder(null)}
+        >
+          <div
+            className="rounded-lg bg-white p-5 shadow-lg"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2 className="mb-3 text-lg font-semibold">Track Your Order</h2>
+            <div style={{ height: "300px", width: "500px" }}>
+              <MapComponent
+                userLocation={userLocation}
+                shopLocation={shopLocation}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

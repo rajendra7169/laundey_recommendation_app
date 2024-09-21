@@ -1,7 +1,7 @@
 import { v2 as cloudinary } from "cloudinary";
 import productModel from "../models/productModel.js";
 
-// functions for add product
+// functions for adding a product
 const addProduct = async (req, res) => {
   try {
     const {
@@ -12,6 +12,10 @@ const addProduct = async (req, res) => {
       subCategory,
       sizes,
       bestseller,
+      phone,
+      email,
+      socialPage,
+      shopLocation,
     } = req.body;
 
     const image1 = req.files.image1 && req.files.image1[0];
@@ -38,10 +42,14 @@ const addProduct = async (req, res) => {
       category,
       price: Number(price),
       subCategory,
-      bestseller: bestseller === "true" ? true : false,
+      bestseller: bestseller === "true",
       sizes: JSON.parse(sizes),
       image: imagesUrl,
       date: Date.now(),
+      phone, // Added contact information
+      email, // Added contact information
+      socialPage, // Added contact information
+      shopLocation, // Added contact information
     };
 
     console.log(productData);
@@ -53,22 +61,22 @@ const addProduct = async (req, res) => {
     res.json({ success: true, message: "Product added" });
   } catch (error) {
     console.log(error);
-    res.json({ success: false, message: message.error });
+    res.json({ success: false, message: error.message });
   }
 };
 
-// functions for get all products
+// functions for getting all products
 const listProducts = async (req, res) => {
   try {
     const products = await productModel.find({});
     res.json({ success: true, products });
   } catch (error) {
     console.log(error);
-    res.json({ success: false, message: message.error });
+    res.json({ success: false, message: error.message });
   }
 };
 
-// functions for removing product
+// functions for removing a product
 const removeProduct = async (req, res) => {
   try {
     await productModel.findByIdAndDelete(req.body.id);
@@ -79,7 +87,7 @@ const removeProduct = async (req, res) => {
   }
 };
 
-// functions for single product info
+// functions for getting a single product's info
 const singleProduct = async (req, res) => {
   try {
     const { productId } = req.body;

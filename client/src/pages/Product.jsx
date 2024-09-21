@@ -6,23 +6,21 @@ import { assets } from "../assets/assets";
 const Product = () => {
   const { productId } = useParams();
   const { products, currency, addToCart } = useContext(ShopContext);
-  const [productData, setProductData] = useState(false);
+  const [productData, setProductData] = useState(null);
   const [image, setImage] = useState("");
   const [size, setSize] = useState("");
 
-  const fetchProductData = async () => {
-    products.map((item) => {
-      if (item._id === productId) {
-        setProductData(item);
-        setImage(item.image[0]);
-        return null;
-      }
-    });
+  const fetchProductData = () => {
+    const foundProduct = products.find((item) => item._id === productId);
+    if (foundProduct) {
+      setProductData(foundProduct);
+      setImage(foundProduct.image[0]); // Set the first image as default
+    }
   };
 
   useEffect(() => {
     fetchProductData();
-  }, [productId]);
+  }, [productId, products]); // Add products as a dependency
 
   return productData ? (
     <div className="border-t-2 pt-10 opacity-100 transition-opacity duration-500 ease-in">
@@ -36,12 +34,13 @@ const Product = () => {
                 key={index}
                 src={item}
                 className="w-[24%] flex-shrink-0 cursor-pointer sm:mb-3 sm:w-full"
+                alt={`Product image ${index + 1}`}
               />
             ))}
           </div>
 
           <div className="w-full sm:w-[80%]">
-            <img src={image} className="h-auto w-full" alt="" />
+            <img src={image} className="h-auto w-full" alt="Selected product" />
           </div>
         </div>
 
@@ -67,6 +66,25 @@ const Product = () => {
           <p className="mt-5 text-gray-500 md:w-4/5">
             {productData.description}
           </p>
+
+          {/* Contact Information Section */}
+          <div className="my-8 rounded border bg-gray-100 p-4">
+            <h2 className="text-lg font-semibold">Contact Information</h2>
+            <p>Phone: {productData.phone}</p>
+            <p>Email: {productData.email}</p>
+            <p>
+              Social Media Page:{" "}
+              <a
+                href={productData.socialPage}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {productData.socialPage}
+              </a>
+            </p>
+            <p>Shop Location: {productData.shopLocation}</p>
+          </div>
+
           <div className="my-8 flex flex-col gap-4">
             <p>Select Cloths Type</p>
             <div className="flex gap-2">
