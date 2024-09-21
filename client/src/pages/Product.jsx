@@ -68,7 +68,7 @@ const Product = () => {
             {productData.description}
           </p>
           <div className="my-8 flex flex-col gap-4">
-            <p>Select Size</p>
+            <p>Select Cloths Type</p>
             <div className="flex gap-2">
               {productData.sizes.map((item, index) => (
                 <button
